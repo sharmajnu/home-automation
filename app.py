@@ -12,7 +12,7 @@ for i in pinList:
     GPIO.setup(i, GPIO.OUT)
     GPIO.output(i, GPIO.HIGH)
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='')
 
 @app.route('/')
 def index():
@@ -21,7 +21,7 @@ def index():
 @app.route('/<path:path>')
 def static_proxy(path):
   # send_static_file will guess the correct MIME type
-  return app.send_static_file(path)
+  return app.send_from_directory('/', path)
 
 
 @app.route('/light', methods=['GET', 'POST'])
