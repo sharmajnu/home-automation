@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/sharmajnu/home-automation/issues"
   },
-  "homepage": "https://github.com/sharmajnu/home-automation#readme"
+  "homepage": "https://github.com/sharmajnu/home-automation#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
 }
