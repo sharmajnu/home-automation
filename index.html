@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap-switch.min.css"/>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="bootstrap-switch.min.js"></script>
+    <style>
+        .btn {
+            min-width: 300px;
+        }
+
+        .container {
+            text-align: center;
+        }
+    </style>
+    <script type="application/javascript">
+        $(document).ready(function () {
+            $("[type='checkbox']").bootstrapSwitch();
+
+            $.get('https://api.github.com/users/sharmajnu')
+                    .done(function (data) {
+                        var data2 = [true, true, false, false];
+                        reInitializeBtton(data2);
+                        console.log(data);
+                    })
+                    .fail(function (error) {
+                        console.log('Something went wrong ', error);
+                    })
+        });
+
+        var initializationInProgress = false;
+        function reInitializeBtton(data) {
+            var switches = $("[type='checkbox']");
+
+            initializationInProgress = true;
+
+            for (var i = 0; i < switches.length; i++) {
+                $(switches[i]).bootstrapSwitch('state', data[i]);
+            }
+
+            initializationInProgress = false;
+        }
+
+        function toggleBtn(control, value) {
+
+            if(initializationInProgress){
+                return;
+            }
+
+            var url = '/light?button=' + value;
+            $.post(url)
+                    .done(function (data) {
+                        reInitializeBtton(data);
+                    })
+                    .fail(function (err) {
+                        console.log('Something went wrong in updating state', err);
+                    });
+        }
+
+    </script>
+</head>
+<body>
+<div class="container">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2>Home automation</h2>
+        </div>
+        <div class="panel-body">
+            <div class="btn-container well">
+                <span>Button 1</span>
+                <input type="checkbox" id="switch0" name="my-checkbox" onchange="toggleBtn(this, 0);">
+            </div>
+            <div class="btn-container well">
+                <span>Button 2</span>
+                <input type="checkbox" id="switch1" name="my-checkbox" onchange="toggleBtn(this, 1);">
+            </div>
+            <div class="btn-container well">
+                <span>Button 3</span>
+                <input type="checkbox" id="switch2" name="my-checkbox" onchange="toggleBtn(this, 2);">
+            </div>
+            <div class="btn-container well">
+                <span>Button 4</span>
+                <input type="checkbox" id="switch3" name="my-checkbox" onchange="toggleBtn(this, 3);">
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>
