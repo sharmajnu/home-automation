@@ -24,8 +24,7 @@
 
             $.get('https://api.github.com/users/sharmajnu')
                     .done(function (data) {
-                        var data2 = [true, true, false, false];
-                        reInitializeBtton(data2);
+                        reInitializeButton(data);
                         console.log(data);
                     })
                     .fail(function (error) {
@@ -34,7 +33,7 @@
         });
 
         var initializationInProgress = false;
-        function reInitializeBtton(data) {
+        function reInitializeButton(data) {
             var switches = $("[type='checkbox']");
 
             initializationInProgress = true;
@@ -55,7 +54,7 @@
             var url = '/light?button=' + value;
             $.post(url)
                     .done(function (data) {
-                        reInitializeBtton(data);
+                        reInitializeButton(data);
                     })
                     .fail(function (err) {
                         console.log('Something went wrong in updating state', err);
