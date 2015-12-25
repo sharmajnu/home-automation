@@ -1,0 +1,19 @@
+{
+  "name": "home-automation",
+  "version": "1.0.0",
+  "description": "This is home automation project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sharmajnu/home-automation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sharmajnu/home-automation/issues"
+  },
+  "homepage": "https://github.com/sharmajnu/home-automation#readme"
+}
