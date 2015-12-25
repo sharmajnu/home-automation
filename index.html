@@ -22,7 +22,7 @@
         $(document).ready(function () {
             $("[type='checkbox']").bootstrapSwitch();
 
-            $.get('https://api.github.com/users/sharmajnu')
+            $.get('/login')
                     .done(function (data) {
                         reInitializeButton(data);
                         console.log(data);
