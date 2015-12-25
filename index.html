@@ -20,7 +20,7 @@
     </style>
     <script type="application/javascript">
         $(document).ready(function () {
-            $("[type='checkbox']").bootstrapSwitch();
+            $("[type='checkbox']").bootstrapSwitch({size: 'large', handleWidth: '100px', labelWidth: '90px'});
 
             $.get('/light')
                     .done(function (data) {
