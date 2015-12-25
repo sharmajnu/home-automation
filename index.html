@@ -17,6 +17,13 @@
         .container {
             text-align: center;
         }
+
+        .switch-label{
+            font-size: 20px;
+            padding-right: 40px;
+            padding-top: 10px;
+            display: inline-block;
+        }
     </style>
     <script type="application/javascript">
         $(document).ready(function () {
@@ -45,13 +52,13 @@
             initializationInProgress = false;
         }
 
-        function toggleBtn(control, value) {
+        function toggleBtn(buttonNumber) {
 
             if(initializationInProgress){
                 return;
             }
 
-            var url = '/light?button=' + value;
+            var url = '/light?button=' + buttonNumber;
             $.post(url)
                     .done(function (data) {
                         reInitializeButton(data);
@@ -66,26 +73,26 @@
 <body>
 <div class="container">
 
-    <div class="panel panel-default">
+    <div class="panel panel-primary">
         <div class="panel-heading">
-            <h2>Home automation</h2>
+            <h2>Deepak's Home automation</h2>
         </div>
         <div class="panel-body">
             <div class="btn-container well">
-                <span>Button 1</span>
-                <input type="checkbox" id="switch0" name="my-checkbox" onchange="toggleBtn(this, 0);">
+                <span class="switch-label">Button 1</span>
+                <input type="checkbox" id="switch0" name="my-checkbox" onchange="toggleBtn(0);" title="Button1">
             </div>
             <div class="btn-container well">
-                <span>Button 2</span>
-                <input type="checkbox" id="switch1" name="my-checkbox" onchange="toggleBtn(this, 1);">
+                <span class="switch-label">Button 2</span>
+                <input type="checkbox" id="switch1" name="my-checkbox" onchange="toggleBtn(1);" title="Button2">
             </div>
             <div class="btn-container well">
-                <span>Button 3</span>
-                <input type="checkbox" id="switch2" name="my-checkbox" onchange="toggleBtn(this, 2);">
+                <span class="switch-label">Button 3</span>
+                <input type="checkbox" id="switch2" name="my-checkbox" onchange="toggleBtn(2);" title="Button3">
             </div>
             <div class="btn-container well">
-                <span>Button 4</span>
-                <input type="checkbox" id="switch3" name="my-checkbox" onchange="toggleBtn(this, 3);">
+                <span class="switch-label">Button 4</span>
+                <input type="checkbox" id="switch3" name="my-checkbox" onchange="toggleBtn(3);" title="Button4">
             </div>
         </div>
     </div>
