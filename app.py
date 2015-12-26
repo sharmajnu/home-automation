@@ -12,7 +12,7 @@ for i in pinList:
     GPIO.setup(i, GPIO.OUT)
     GPIO.output(i, GPIO.HIGH)
 
-app = Flask(__name__, static_url_path='/')
+app = Flask(__name__, static_url_path='/home/pi/code/python/home-automation/home-automation')
 
 @app.route('/<path:path>')
 def static_proxy(path):
