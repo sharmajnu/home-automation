@@ -19,7 +19,7 @@ def static_proxy(path):
   # send_static_file will guess the correct MIME type
   print 'Serving static file'
   print path
-  return send_from_directory('', path)
+  return send_from_directory('/home/pi/code/python/home-automation/home-automation', path)
 
 
 @app.route('/light', methods=['GET', 'POST'])
