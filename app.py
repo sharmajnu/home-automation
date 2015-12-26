@@ -14,13 +14,11 @@ for i in pinList:
 
 app = Flask(__name__, static_url_path='/')
 
-@app.route('/i')
-def index():
-    return app.send_static_file('index.html')
-
 @app.route('/<path:path>')
 def static_proxy(path):
   # send_static_file will guess the correct MIME type
+  print 'Serving static file'
+  print path
   return send_from_directory('', path)
 
 
@@ -39,6 +37,6 @@ def light():
         return Response(json.dumps(switchValue),  mimetype='application/json')
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=False, host='0.0.0.0')
 
 
